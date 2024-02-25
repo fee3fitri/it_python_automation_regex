@@ -22,12 +22,13 @@ after the process id.
 
 import re
 def extract_pid(log_line):
-    regex = r"\[(\d+)\]: [A-Z]+"
+    # regex = r"\[(\d+)\]: [A-Z]+"
+    regex = r"\[(\d+)\]: (\w+)"
     result = re.search(regex, log_line)
     if result is None:
         return None
-    word_idx = result[0].find(" ") + 1
-    return f"{result[1]} ({result[0][word_idx:]})"
+    # word_idx = result[0].find(" ") + 1
+    return f"{result[1]} ({result[2]})"
 
 print(extract_pid("July 31 07:51:48 mycomputer bad_process[12345]: ERROR Performing package upgrade")) # 12345 (ERROR)
 print(extract_pid("99 elephants in a [cage]")) # None

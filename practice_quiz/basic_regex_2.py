@@ -10,6 +10,7 @@ Fill in the regular expression to do that. How many of the concepts that you jus
 import re
 def check_time(text):
   pattern = r"[1-9][0-2]?:[0-5][0-9] ?[am|AM|pm|PM]"
+  # pattern = r'^[1-9]|1[0-2]:[0-5][0-9] ?[AaPp][Mm]$'
   result = re.search(pattern, text)
   return result != None
 
